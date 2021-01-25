@@ -3,7 +3,7 @@
 const int duration = 200;
 const double fullOpacity = 0.999;
 
-BaseWidget::BaseWidget(QWidget *parent)
+BaseWidget::BaseWidget(QWidget* parent)
     : QLabel(parent)
 {
     this->setAlignment(Qt::AlignCenter);
@@ -22,8 +22,7 @@ BaseWidget::BaseWidget(QWidget *parent)
     m_scaleAnimation->setEasingCurve(QEasingCurve::OutCubic);
 }
 
-
-void BaseWidget::setFont(const QFont &f)
+void BaseWidget::setFont(const QFont& f)
 {
     QWidget::setFont(f);
     m_fontSize = font().pointSizeF();
@@ -58,7 +57,6 @@ void BaseWidget::zoomOut()
     m_scaleAnimation->setEndValue(m_fontSize);
     m_scaleAnimation->start();
 }
-
 
 void BaseWidget::hide()
 {
@@ -104,7 +102,6 @@ void BaseWidget::setOpacity(double opacity)
     m_opacity->setOpacity(opacity);
 }
 
-
 void BaseWidget::enterEvent(QEvent*)
 {
     emit hovered();
@@ -115,18 +112,13 @@ void BaseWidget::leaveEvent(QEvent*)
     emit leaved();
 }
 
-void BaseWidget::mousePressEvent(QMouseEvent *e)
+void BaseWidget::mousePressEvent(QMouseEvent* e)
 {
-    if(e->button() == Qt::RightButton)
-    {
+    if (e->button() == Qt::RightButton) {
         emit rightClicked();
-    }
-    else if(e->button() == Qt::LeftButton)
-    {
+    } else if (e->button() == Qt::LeftButton) {
         emit clicked();
-    }
-    else if (e->button() == Qt::MidButton)
-    {
+    } else if (e->button() == Qt::MiddleButton) {
         emit midClicked();
     }
 }
